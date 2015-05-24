@@ -1,6 +1,6 @@
-# Xethya-rpg-engine
+# xtrpg: Xethya RPG Engine
 
-This README outlines the details of collaborating on this Ember addon.
+The home for the Xethya Role-Playing Game Engine (xtrpg).
 
 ## Installation
 
@@ -21,5 +21,15 @@ This README outlines the details of collaborating on this Ember addon.
 ## Building
 
 * `ember build`
+
+### Documentation
+
+Install the `yuidocjs` NPM package:
+
+* `npm install -g yuidocjs`
+
+Then, run the following command:
+
+* `yuidoc --outdir docs app`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
