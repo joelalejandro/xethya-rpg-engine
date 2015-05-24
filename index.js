@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'xethya-rpg-engine'
+  name: 'xtrpg'
 };
