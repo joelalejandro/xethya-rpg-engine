@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Race from '../race';
-import StatStrength from '../stats/strength';
 import WearableSlot from '../../../inventory/wearable-slot';
 
 /**

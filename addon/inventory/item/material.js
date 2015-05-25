@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Item from '../item';
-import ENV from '../../../config/environment';
+import XtrpgConfiguration from '../../../core/configuration';
 
 /**
  * Defines a material, used for constructing items.
@@ -30,7 +30,7 @@ export default Item.extend({
    * @event materialTypeChanged
    */
   materialTypeChanged: Ember.observer('materialType', function() {
-    Ember.assert(ENV.APP.materialTypes.contains(this.get('materialType')),
-      'material.materialType must be one of these: ' + ENV.APP.materialTypes.join(', '));
+    Ember.assert(XtrpgConfiguration.materialTypes.contains(this.get('materialType')),
+      'material.materialType must be one of these: ' + XtrpgConfiguration.materialTypes.join(', '));
   })
 });

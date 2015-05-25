@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Item from '../item';
-import ENV from '../../../config/environment';
+import XtrpgConfiguration from '../../../core/configuration';
 import SkillDepending from '../../entity/specs/skill-depending';
 import StatDepending from '../../entity/specs/stat-depending';
 
@@ -71,8 +71,8 @@ export default Item.extend(
      * @event damageTypeChanged
      */
     damageTypeChanged: Ember.observer('damageType', function() {
-      Ember.assert(ENV.APP.damageTypes.indexOf(this.get('damageType')) > -1,
-        'damage.damageType must be one of these: ' + ENV.APP.damageTypes.join(', '));
+      Ember.assert(XtrpgConfiguration.damageTypes.indexOf(this.get('damageType')) > -1,
+        'damage.damageType must be one of these: ' + XtrpgConfiguration.damageTypes.join(', '));
     })
   }
 );

@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DiceRoller from '../dice/dice-roller';
 import TurnParticipant from './turn-participant';
 import TurnTeam from './turn-team';
+import TurnTeamRelationship from './turn-team-relationship';
 
 /**
  * @class Turn
@@ -107,38 +108,39 @@ export default Ember.Object.extend(Ember.Evented, DiceRoller, {
    * @param {TurnRelationship[]|string[]} relationships
    */
   addTeam: function(team, relationships) {
+    let _teamData = {};
     if (team.get('_type') === 'TurnTeam') {
       this.get('teams').pushObject(team);
     } else if (typeof team === 'string') {
-      let name;
-      let color;
       let teamRelationships = Ember.A();
       if (team.indexOf('#') > -1) {
         let teamData = team.split('#');
-        name = teamData[0];
-        color = teamData[1];
+        _teamData.name = teamData[0];
+        _teamData.color = teamData[1];
       } else {
-        name = team;
+        _teamData.name = team;
       }
       if (relationships !== null && Array.isArray(relationships) &&
-          relationships.every(function(r) { return typeof r === 'string' })) {
+          relationships.every(function(r) { return typeof r === 'string'; })) {
         teamRelationships = relationships.map(function(r) {
-          if (r.indexOf(':') === 0) return null;
+          if (r.indexOf(':') === 0) {
+            return null;
+          }
 
           let relationshipData = r.split(':');
           let teamName = relationshipData[0];
           let teamRelationship = relationshipData[1];
 
           return TurnTeamRelationship.create({
-            team: TurnTream.create({ id: Ember.string.camelize(teamName) }),
+            team: TurnTeam.create({ id: Ember.string.camelize(teamName) }),
             relationship: teamRelationship.toLowerCase()
           });
         }).filter(function(r) { return r !== null; });
       }
       this.get('teams').pushObject(TurnTeam.create({
-        id: Ember.string.camelize(name),
-        name: Ember.string.classify(name),
-        color: color,
+        id: Ember.string.camelize(_teamData.name),
+        name: Ember.string.classify(_teamData.name),
+        color: _teamData.color,
         teamRelationships: teamRelationships
       }));
     }
@@ -201,7 +203,7 @@ export default Ember.Object.extend(Ember.Evented, DiceRoller, {
     Ember.assert(this.hasTeam(teamId),
       'turn.addParticipant: team ' + teamId + ' does not exists');
 
-    participants.pushObject(TurnParticipant.create({
+    this.get('participants').pushObject(TurnParticipant.create({
       entity: livingEntity,
       teams: teamId ? ['all', teamId] : ['all']
     }));
@@ -230,7 +232,7 @@ export default Ember.Object.extend(Ember.Evented, DiceRoller, {
     this.get('participants').forEach(function(participant) {
       let roll = _this.get('dice').rollOpenThrow();
       let initiative = roll.get('isBlunder') ? roll.get('rolledNumber') : roll.get('rolledNumberSum');
-      participant.set('initiative', initiative)
+      participant.set('initiative', initiative);
     });
   },
 

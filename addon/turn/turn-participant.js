@@ -4,7 +4,7 @@ import BasicMetadata from '../core/basic-metadata';
 export default Ember.Object.extend(BasicMetadata, {
 
   _type: Ember.computed(function() {
-    return 'TurnParticipant'
+    return 'TurnParticipant';
   }),
 
   id: Ember.computed('entity._uuid', function() {

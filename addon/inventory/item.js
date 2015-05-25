@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Effectable from '../entity/specs/effectable';
+import Effectable from '../entity/effectable';
 import BasicMetadata from '../core/basic-metadata';
 import Wearable from './wearable';
 import Gradeable from '../core/gradeable';

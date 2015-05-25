@@ -10,7 +10,7 @@ import ItemStack from '../inventory/item-stack';
  * @extends {Ember.Object}
  * @uses BasicMetadata
  */
-export default Ember.Object.extend({
+export default Ember.Object.extend(BasicMetadata, {
 
   /**
    * Contains a list of all ingredients required for
@@ -134,11 +134,14 @@ export default Ember.Object.extend({
       throw new Error('INVALID_CRAFT_OPERATION');
     }
 
-    if (craftIngredients.every(function(ingredient) {
+    if (owner.get('inventory').every(function(ingredient) {
       return recipeIngredients.findBy('id', ingredient.get('id')) !== null;
     })) {
-      this.pickUpObject(this.get('itemGenerator').call(this, owner));
+      owner.pickUpObject(this.get('itemGenerator').call(this, owner));
+      recipeIngredients.forEach(function(ingredient) {
+        owner.dropObject(ingredient);
+      });
     }
   }
 
-})
+});

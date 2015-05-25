@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Wallet from './wallet';
 import ItemStack from './item-stack';
-import MUGRE from '..misc/filthy-stuff';
+import MUGRE from '../misc/filthy-stuff';
 
 /**
  * Implements capabilities of handling an inventory of
@@ -144,7 +144,7 @@ export default Ember.Mixin.create({
 
     if (!this.canPutUpWeight(obj)) {
       throw new Error('INVENTORY_EXCEEDS_WEIGHT');
-    };
+    }
 
     if (obj.get('_type') === 'ItemStack') {
       if (obj.get('item._type') === 'ItemMoney') {
@@ -215,6 +215,10 @@ export default Ember.Mixin.create({
     Ember.assert(['ItemStack', 'Item'].indexOf(item.get('_type')) > -1,
       'equipper.dropObject: item must be an Item or an ItemStack instance');
 
+    if (amount === undefined && item.get('_type') === 'ItemStack') {
+      amount = item.get('stackSize');
+    }
+
     if (amount !== undefined) {
       Ember.assert(!isNaN(amount),
         'equipper.dropObject: amount must be a number');
@@ -228,7 +232,9 @@ export default Ember.Mixin.create({
       let inventory = this.get('inventory');
       let dropped = false;
       inventory.forEach(function(content) {
-        if (dropped) return;
+        if (dropped) {
+          return;
+        }
 
         if (content.get('_type') === 'ItemStack' &&
             content.get('item.id') === item.get('id') &&

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import ENV from '../../../../config/environment';
+import XtrpgConfiguration from '../../../core/configuration';
 
 import FibonacciLevelUp from './up/fibonacci';
 import MarchelLevelUp from './up/marchel';
@@ -72,7 +72,7 @@ export default Ember.Mixin.create({
    * @readOnly
    * @type {string}
    */
-  levelUpAlgorithmName: Ember.computed(function() { return ENV.APP.levelUpAlgorithmName; }),
+  levelUpAlgorithmName: Ember.computed(function() { return XtrpgConfiguration.levelUpAlgorithmName; }),
 
   /**
    * Gets the defined level up algorithm. Such algorithm must be

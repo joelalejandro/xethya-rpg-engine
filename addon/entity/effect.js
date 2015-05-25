@@ -180,6 +180,18 @@ export default Ember.Object.extend(BasicMetadata, Gradeable, {
    */
   _autoIncreaseRunLaterCallback: null,
 
+  _isFinite: Ember.computed('duration', '_durationRunLaterCallback', function() {
+    return this.get('duration') > 0 &&
+           this.get('_durationRunLaterCallback');
+  }),
+
+  _isAutoIncrease: Ember.computed('canAutoIncrease', 'autoIncreaseInterval',
+    '_autoIncreaseRunLaterCallback', function() {
+    return this.get('canAutoIncrease') &&
+           this.get('autoIncreaseInterval') > 0 &&
+           this.get('_autoIncreaseRunLaterCallback');
+  }),
+
   /**
    * Sets an unique ID for this Effect instance.
    *

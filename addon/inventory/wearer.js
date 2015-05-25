@@ -32,9 +32,8 @@ export default Ember.Mixin.create({
    * @param {string} slot
    */
   wear: function(item, slot) {
-    let willWear = (item.get('isConditioned') &&
-        item.areConditionsMet())
-        || !this.get('isConditioned');
+    let willWear = (item.get('isConditioned') && item.areConditionsMet()) ||
+                   !this.get('isConditioned');
 
     if (willWear) {
       if (Array.isArray(this.get('wearing.') + slot)) {

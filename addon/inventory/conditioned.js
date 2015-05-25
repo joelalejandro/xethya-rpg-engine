@@ -16,10 +16,10 @@ export default Ember.Mixin.create({
     operators: =, >=, >, <=, <
      */
     let metadata = condition.split(' ');
-    let entity = condition[0].split(':');
+    let entity = metadata[0].split(':');
     let prefix = entity[0];
     let subject = entity[1];
-    let operator = condition[1];
+    let operator = metadata[1];
     let expectedComparisonResults = {
       '=': [0],
       '>=': [1, 0],
@@ -32,16 +32,14 @@ export default Ember.Mixin.create({
       'stat': 'value',
       'skill': 'currentValue'
     };
-    let comparisonValue = condition[2];
+    let comparisonValue = metadata[2];
     let result = null;
-
-    if ((prefix === 'stat' && this.get('hasStats'))
-        ||
-        (prefix === 'skill' && this.get('hasSkills'))) {
+    let isStat = prefix === 'stat' && this.get('hasStats');
+    let isSkill = prefix === 'skill' && this.get('hasSkills');
+    if (isStat || isSkill) {
       result = Ember.compare(
         this.get[Ember.string.capitalize(prefix)](subject)
-            .get(['value', 'currentValue'][expectedValueGetter])
-      , comparisonValue);
+            .get(['value', 'currentValue'][expectedValueGetter]), comparisonValue);
     } else if (prefix === 'attr' && this.get(subject)) {
       result = Ember.compare(this.get(subject), comparisonValue);
     }

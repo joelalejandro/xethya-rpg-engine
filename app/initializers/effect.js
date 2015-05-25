@@ -1,4 +1,4 @@
-import Effect from 'xethya/utils/effect';
+import Effect from 'xtrpg/entity/effect';
 
 export function initialize(container, application) {
   application.register('effect:main', Effect, { instantiate: false });

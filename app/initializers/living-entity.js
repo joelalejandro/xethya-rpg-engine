@@ -1,4 +1,4 @@
-import LivingEntity from 'xethya/utils/living-entity';
+import LivingEntity from 'xtrpg/entity/living-entity';
 
 export function initialize(container, application) {
   application.register('living-entity:main', LivingEntity, { instantiate: false });

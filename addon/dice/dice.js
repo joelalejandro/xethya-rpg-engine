@@ -4,7 +4,7 @@ import Ember from 'ember';
 import OpenThrowDiceRoll from './rolls/open-throw';
 import BlunderThrowDiceRoll from './rolls/blunder-throw';
 
-import ENV from '../../config/environment';
+import XtrpgConfiguration from '../core/configuration';
 
 /**
  * Implements a dice thrower for the game.
@@ -153,11 +153,11 @@ export default Ember.Object.extend({
     let roll = [];
     let isOpen = true;
     let lastNumber = 0;
-    let openThrowLowerBound = ENV.APP.openThrow.lowerBound;
-    let openThrowUpperBound = ENV.APP.openThrow.upperBound;
-    let blunderThrowLowerBound = ENV.APP.blunderThrow.lowerBound;
-    let blunderThrowUpperBound = ENV.APP.blunderThrow.upperBound;
-    let lowerBoundDifficultyIncrease = ENV.APP.openThrow.lowerBoundDifficultyIncrease;
+    let openThrowLowerBound = XtrpgConfiguration.openThrow.lowerBound;
+    let openThrowUpperBound = XtrpgConfiguration.openThrow.upperBound;
+    let blunderThrowLowerBound = XtrpgConfiguration.blunderThrow.lowerBound;
+    let blunderThrowUpperBound = XtrpgConfiguration.blunderThrow.upperBound;
+    let lowerBoundDifficultyIncrease = XtrpgConfiguration.openThrow.lowerBoundDifficultyIncrease;
     this.set('minimumValue', 1);
     this.set('maximumValue', openThrowUpperBound);
     this.set('diceCount', 1);
@@ -190,8 +190,8 @@ export default Ember.Object.extend({
    */
   rollBlunderThrow: function() {
     let roll = 0;
-    let lowerBlunderSeverity = ENV.APP.blunderThrow.lowerBlunderSeverity;
-    let upperBlunderSeverity = ENV.APP.blunderThrow.upperBlunderSeverity;
+    let lowerBlunderSeverity = XtrpgConfiguration.blunderThrow.lowerBlunderSeverity;
+    let upperBlunderSeverity = XtrpgConfiguration.blunderThrow.upperBlunderSeverity;
     let severityFound = false;
     this.set('minimumValue', lowerBlunderSeverity);
     this.set('maximumValue', upperBlunderSeverity);
@@ -200,12 +200,12 @@ export default Ember.Object.extend({
 
     let blunderThrow = BlunderThrowDiceRoll.create();
 
-    Object.keys(ENV.APP.blunderThrow.severityRanges, function(key) {
+    Object.keys(XtrpgConfiguration.blunderThrow.severityRanges, function(key) {
       if (severityFound) {
         return;
       }
 
-      let severity = ENV.APP.blunderThrow.severityRanges[key];
+      let severity = XtrpgConfiguration.blunderThrow.severityRanges[key];
       if (roll >= severity[0] && roll <= severity[1]) {
         blunderThrow.set('rolledNumber', roll);
         blunderThrow.set('severityRange', severity);

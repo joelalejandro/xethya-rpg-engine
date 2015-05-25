@@ -91,12 +91,8 @@ export default Ember.Mixin.create({
     if (typeof effect === 'string') {
       this.get(_type.toLowerCase() + 's').forEach(function(s) {
         s.get('effects').filter(function(e) {
-          return e.get('id') === effect &&
-                 (
-                  (e.get('duration') > 0 && e.get('_durationRunLaterCallback'))
-                  ||
-                  (e.get('canAutoIncrease') && e.get('autoIncreaseInterval') > 0 && e.get('_autoIncreaseRunLaterCallback'))
-                 );
+          let isEffect = e.get('id') === effect;
+          return isEffect && (e.get('_isFinite') || e.get('_isAutoIncrease'));
         }).forEach(function(e) {
           if (e.get('_durationRunLaterCallback')) {
             Ember.run.cancel(e.get('_durationRunLaterCallback'));
@@ -106,12 +102,14 @@ export default Ember.Mixin.create({
           }
         });
         s.set('effects', s.get('effects').rejectBy('id', effect));
-      })
+      });
       return;
     }
 
     effect.get('affects').forEach(function(affect) {
-      if (found && _mode === 'contains') return;
+      if (found && _mode === 'contains') {
+        return;
+      }
 
       let _tmpAffect = affect.split(':');
       let targetType = _tmpAffect[0], targetId = _tmpAffect[1];

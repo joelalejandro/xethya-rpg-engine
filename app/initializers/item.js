@@ -1,4 +1,4 @@
-import Item from 'xethya/utils/item';
+import Item from 'xtrpg/inventory/item';
 
 export function initialize(container, application) {
   application.register('item:main', Item, { instantiate: false });
