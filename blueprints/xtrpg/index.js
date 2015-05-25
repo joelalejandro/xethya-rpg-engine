@@ -2,6 +2,6 @@ module.exports = {
   normalizeEntityName: function() {},
 
   afterInstall: function() {
-    return this.addBowerPackageToProject('xtrpg');
+    return this.addBowerPackageToProject('random');
   }
 };
