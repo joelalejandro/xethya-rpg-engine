@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Conditioned from './conditioned';
+import Conditioned from '../items/conditioned';
 
 /**
  * Determines that an object can be worn.

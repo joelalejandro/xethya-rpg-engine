@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import XtrpgConfiguration from '../core/configuration';
+import XtrpgConfiguration from '../configuration';
 
 export function initialize(/* container, application */) {
-  Ember.Libraries.register('xtrpg / Xethya RPG Engine',
+  Ember.libraries.register('xtrpg / Xethya RPG Engine',
     XtrpgConfiguration.version);
 }
 

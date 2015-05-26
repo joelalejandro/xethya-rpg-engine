@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Wallet from './wallet';
+import Wallet from '../economy/wallet';
 import ItemStack from './item-stack';
 import MUGRE from '../misc/filthy-stuff';
 
