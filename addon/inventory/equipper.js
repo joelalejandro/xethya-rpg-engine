@@ -8,6 +8,7 @@ import MUGRE from '../misc/filthy-stuff';
  * items and a wallet for managing money.
  *
  * @class Equipper
+ * @namespace Inventory
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

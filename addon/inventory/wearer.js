@@ -4,6 +4,7 @@ import Ember from 'ember';
  * Handles wearing and unwearing objects in an entity.
  *
  * @class Wearer
+ * @namespace Inventory
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

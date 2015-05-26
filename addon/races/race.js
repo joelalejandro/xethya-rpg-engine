@@ -5,6 +5,7 @@ import BasicMetadata from '../../core/basic-metadata';
  * Represents an entity's race.
  *
  * @class Race
+ * @namespace Races
  * @extends {Ember.Object}
  * @uses BasicMetadata
  */

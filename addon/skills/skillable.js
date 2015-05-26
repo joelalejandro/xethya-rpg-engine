@@ -5,6 +5,7 @@ import MUGRE from '../../misc/filthy-stuff';
  * Allows an entity to possess skills and abilities.
  *
  * @class Skillable
+ * @namespace Skills
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

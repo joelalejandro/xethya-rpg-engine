@@ -5,6 +5,7 @@ import Conditioned from '../items/conditioned';
  * Determines that an object can be worn.
  *
  * @class Wearable
+ * @namespace Inventory
  * @extends {Ember.Mixin}
  * @uses Conditioned
  */

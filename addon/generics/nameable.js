@@ -4,18 +4,19 @@ import Ember from 'ember';
  * Implements properties for an entity to be named.
  *
  * @class Nameable
+ * @namespace Generics
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({
   /**
    * Determines is the mixin is active.
-   * 
+   *
    * @property isNameable
    * @type {boolean}
    * @default true
    */
   isNameable: Ember.computed(function() { return true; }),
-  
+
   /**
    * Sets the entity's first name.
    *

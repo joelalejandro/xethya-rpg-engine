@@ -6,6 +6,7 @@ import XtrpgConfiguration from '../configuration';
  * Defines a material, used for constructing items.
  *
  * @class Material
+ * @namespace Items
  * @extends {Item}
  */
 export default Item.extend({

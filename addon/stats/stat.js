@@ -7,6 +7,7 @@ import BasicMetadata from '../../core/basic-metadata';
  * through Effect objects.
  *
  * @class Stat
+ * @namespace Stats
  * @extends {Ember.Object}
  * @uses Effectable
  * @uses BasicMetadata

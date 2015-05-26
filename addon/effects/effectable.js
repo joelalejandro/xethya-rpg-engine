@@ -7,6 +7,7 @@ import MUGRE from '../misc/filthy-stuff';
  * or a skill.
  *
  * @class Effectable
+ * @namespace Effects
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Constitution stat.
  *
- * @class StatConstitution
+ * @class ConstitutionStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

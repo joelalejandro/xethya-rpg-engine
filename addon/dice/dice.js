@@ -11,6 +11,7 @@ import XtrpgConfiguration from '../core/configuration';
  *
  * @class Dice
  * @extends {Ember.Object}
+ * @namespace Dice
  */
 export default Ember.Object.extend({
   _type: Ember.computed(function() {

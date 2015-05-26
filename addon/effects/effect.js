@@ -8,6 +8,7 @@ import random from '../wrappers/random';
  * {Stat} or a {Skill}.
  *
  * @class Effect
+ * @namespace Effects
  * @extends {Ember.Object}
  * @uses BasicMetadata
  * @uses Gradeable

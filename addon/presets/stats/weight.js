@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Weight stat.
  *
- * @class StatWeight
+ * @class WeightStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

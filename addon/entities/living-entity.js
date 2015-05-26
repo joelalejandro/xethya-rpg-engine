@@ -35,6 +35,7 @@ import SkillDodge from '../presets/skills/dodge';
  * characters and such.
  *
  * @class LivingEntity
+ * @namespace Entities
  * @extends {Entity}
  * @uses Raceable
  * @uses Statable

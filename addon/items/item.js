@@ -10,6 +10,7 @@ import Conditioned from './conditioned';
  * through Effect objects.
  *
  * @class Item
+ * @namespace Items
  * @extends Ember.Object
  * @uses Effectable
  * @uses BasicMetadata

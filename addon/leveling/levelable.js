@@ -9,6 +9,7 @@ import MarchelLevelUp from './marchel';
  * Implements behaviours for entities that can level up.
  *
  * @class Levelable
+ * @namespace Leveling
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

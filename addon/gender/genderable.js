@@ -4,18 +4,19 @@ import Ember from 'ember';
  * Implements a property for defining a living entity's gender.
  *
  * @class Genderable
+ * @namespace Gender
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({
   /**
    * Determines if the mixin is active.
-   * 
+   *
    * @property hasGender
    * @type {boolean}
    * @default true
    */
   hasGender: Ember.computed(function() { return true; }),
-  
+
   /**
    * Defines the living entity's gender.
    *

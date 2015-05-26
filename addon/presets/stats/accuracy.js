@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Accuracy stat.
  *
- * @class StatAccuracy
+ * @class AccuracyStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

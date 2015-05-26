@@ -5,6 +5,7 @@ import Item from '../items/item';
  * Represent a coin.
  *
  * @class Money
+ * @namespace Economy
  * @extends {Item}
  */
 export default Item.extend({

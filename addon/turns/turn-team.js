@@ -1,6 +1,10 @@
 import Ember from 'ember';
 import BasicMetadata from '../core/basic-metadata';
 
+/**
+ * @class  TurnTeam
+ * @namespace Turns
+ */
 export default Ember.Object.extend(BasicMetadata, {
 
   _type: Ember.computed(function() {

@@ -6,6 +6,7 @@ import TurnTeamRelationship from './turn-team-relationship';
 
 /**
  * @class Turn
+ * @namespace Turns
  * @extends {Ember.Object}
  * @uses Ember.Evented
  * @uses DiceRoller

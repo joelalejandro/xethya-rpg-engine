@@ -6,6 +6,7 @@ import Effect from '../../effects/effect';
  * Constitution.
  *
  * @class Wounding
+ * @namespace Presets.Effects
  * @extends {Effect}
  */
 export default Effect.extend({

@@ -4,18 +4,19 @@ import Ember from 'ember';
  * Allows an object to be measured in 'grades' of quality.
  *
  * @class Gradeable
+ * @namespace Items
  * @extends {Ember.Mixin}
  */
-export default Ember.Mixin.create({  
+export default Ember.Mixin.create({
   /**
    * Determines if the mixin is active.
-   * 
+   *
    * @property isGradeable
    * @type {boolean}
    * @default true
    */
   isGradeable: Ember.computed(function() { return true; }),
-  
+
   /**
    * Sets the grade of the object.
    *
@@ -72,7 +73,7 @@ export default Ember.Mixin.create({
       'gradeable.grade must be a number');
     Ember.assert(this.get('grade') >= 0,
       'gradeable.grade must be zero or a positive number');
-    Ember.assert(this.get('minimumGrade') <= this.get('grade') && 
+    Ember.assert(this.get('minimumGrade') <= this.get('grade') &&
       this.get('grade') <= this.get('maximumGrade'),
       'gradeable.grade must be between gradeable.minimumGrade and gradeable.maximumGrade');
   })

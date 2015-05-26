@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Carryable Weight stat.
  *
- * @class StatCarryableWeight
+ * @class CarryableWeightStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

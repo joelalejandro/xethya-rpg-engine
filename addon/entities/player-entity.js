@@ -5,6 +5,7 @@ import NonPlayerEntity from './non-player-entity';
  * Defines a playable character (PC) in the game.
  *
  * @class PlayerEntity
+ * @namespace Entities
  * @extends {LivingEntity}
  */
 export default NonPlayerEntity.extend({

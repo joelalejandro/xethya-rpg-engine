@@ -1,3 +1,10 @@
+/**
+ * @module xtrpg
+ */
+
+/**
+ * @class Configuration
+ */
 export default {
   version: '0.0.1-dev',
 

@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Dexterity stat.
  *
- * @class StatDexterity
+ * @class DexterityStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

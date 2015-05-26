@@ -5,6 +5,7 @@ import Ember from 'ember';
  * formula built by Marcelo Ariel Mira Marín (@marcemira_dev).
  *
  * @class MarchelLevelUp
+ * @namespace Leveling
  * @extends {Ember.Object}
  */
 export default Ember.Object.extend({

@@ -5,6 +5,7 @@ import LivingEntity from './living-entity';
  * Defines a non-playable character (NPC) in the game.
  *
  * @class NonPlayerEntity
+ * @namespace Entities
  * @extends {LivingEntity}
  */
 export default LivingEntity.extend({

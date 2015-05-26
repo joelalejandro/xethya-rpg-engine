@@ -5,6 +5,7 @@ import Ember from 'ember';
  *
  * @class OpenThrowDiceRoll
  * @extends {Ember.Object}
+ * @namespace Dice.Rolls
  */
 export default Ember.Object.extend({
   _type: Ember.computed(function() {

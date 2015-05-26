@@ -5,6 +5,7 @@ import Ember from 'ember';
  * for calculating rolls or validating behaviours.
  *
  * @class SkillDepending
+ * @namespace Skills
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

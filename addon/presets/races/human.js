@@ -7,7 +7,8 @@ import WearableSlot from '../../inventory/wearable-slot';
  * It sets a life expectancy of 115 years, Strength as its
  * primary attack stat, and 20 wearable slots.
  *
- * @class RaceHuman
+ * @class HumanRace
+ * @namespace Presets.Race
  * @extends {Race}
  */
 export default Race.extend({

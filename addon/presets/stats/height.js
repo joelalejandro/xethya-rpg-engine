@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Height stat.
  *
- * @class StatHeight
+ * @class HeightStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

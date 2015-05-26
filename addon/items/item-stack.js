@@ -4,6 +4,7 @@ import Ember from 'ember';
  * Represents a stack of items of the same type.
  *
  * @class ItemStack
+ * @namespace Items
  * @extends {Ember.Object}
  */
 export default Ember.Object.extend({

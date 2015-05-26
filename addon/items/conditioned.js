@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+ * @class Conditioned
+ * @namespace Items
+ */
 export default Ember.Mixin.create({
   isConditioned: Ember.computed(function() { return true; }),
 

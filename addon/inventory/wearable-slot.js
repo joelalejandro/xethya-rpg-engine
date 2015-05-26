@@ -6,6 +6,7 @@ import BasicMetadata from '../generics/basic-metadata';
  * a body. Slots are defined per race.
  *
  * @class WearableSlot
+ * @namespace Inventory
  * @extends {Ember.Object}
  * @uses BasicMetadata
  */

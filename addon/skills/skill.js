@@ -12,6 +12,7 @@ import SkillDiceRoll from '../../dice/rolls/skill';
  * Represents the entity's ability to perform an action.
  *
  * @class Skill
+ * @namespace Skills
  * @extends {Ember.Object}
  * @uses BasicMetadata
  * @uses SkillDepending

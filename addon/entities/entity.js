@@ -9,6 +9,7 @@ import DiceRoller from '../dice/dice-roller';
  * a dice thrower and can be affected by effects.
  *
  * @class Entity
+ * @namespace Entities
  * @extends {Ember.Object}
  * @uses Effectable
  * @uses DiceRoller

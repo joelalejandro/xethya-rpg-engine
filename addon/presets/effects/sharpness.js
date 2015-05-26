@@ -6,6 +6,7 @@ import Effect from '../../effects/effect';
  * Sharpness increases attack.
  *
  * @class Sharpness
+ * @namespace Presets.Effects
  * @extends {Effect}
  */
 export default Effect.extend({

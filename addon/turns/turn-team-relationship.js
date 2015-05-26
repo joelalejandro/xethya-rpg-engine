@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+ * @class TurnTeamRelationship
+ * @namespace Turns
+ */
 export default Ember.Object.extend({
 
   _type: Ember.computed(function() {

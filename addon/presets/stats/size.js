@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Size stat.
  *
- * @class StatSize
+ * @class SizeStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

@@ -5,6 +5,7 @@ import GenericRace from './race';
  * Allows a living entity to have a race specified.
  *
  * @class Raceable
+ * @namespace Races
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

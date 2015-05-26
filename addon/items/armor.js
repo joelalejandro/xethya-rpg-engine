@@ -7,6 +7,7 @@ import StatDepending from '../stats/stat-depending';
  * Defines the specification for a piece of armor.
  *
  * @class Armor
+ * @namespace Items
  * @extends {Item}
  * @uses SkillDepending
  * @uses StatDepending

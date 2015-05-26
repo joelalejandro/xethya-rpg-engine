@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Strength stat.
  *
- * @class StatStrength
+ * @class StrengthStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

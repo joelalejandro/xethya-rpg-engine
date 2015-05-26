@@ -5,6 +5,7 @@ import BasicMetadata from '../generics/basic-metadata';
  * Represents an entity's gender.
  *
  * @class Gender
+ * @namespace Gender
  * @extends {Ember.Object}
  * @uses BasicMetadata
  */

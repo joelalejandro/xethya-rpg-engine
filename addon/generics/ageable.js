@@ -4,18 +4,19 @@ import Ember from 'ember';
  * Implements a property for defining age in a living entity.
  *
  * @class Ageable
+ * @namespace Generics
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({
   /**
    * Determines if the mixin is active.
-   * 
+   *
    * @property isAgeable
    * @type {boolean}
    * @default true
    */
   isAgeable: Ember.computed(function() { return true; }),
-  
+
   /**
    * Defines the age of the living entity.
    *

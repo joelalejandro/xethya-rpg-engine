@@ -2,22 +2,23 @@ import Ember from 'ember';
 
 /**
  * Represents a wallet, an object for managing money.
- * 
+ *
  * @class Wallet
+ * @namespace Economy
  * @extends {Ember.Object}
  */
 export default Ember.Object.extend({
   /**
    * Contains a record of all transactions performed with the wallet.
-   * 
+   *
    * @property movements
    * @type {number[]}
    */
   movements: Ember.computed(function() { return Ember.A(); }),
-  
+
   /**
    * Returns the current amount of money.
-   * 
+   *
    * @property balance
    * @type {number}
    */
@@ -26,10 +27,10 @@ export default Ember.Object.extend({
       return a + b;
     });
   }),
-  
+
   /**
    * Adds money to the wallet.
-   * 
+   *
    * @method credit
    * @param {number} amount
    */
@@ -38,10 +39,10 @@ export default Ember.Object.extend({
     Ember.assert(amount > 0, 'wallet.credit: amount must be > 0');
     this.get('movements').push(amount);
   },
-  
+
   /**
    * Takes money from the wallet.
-   * 
+   *
    * @method debit
    * @param {number} amount
    */
@@ -50,11 +51,11 @@ export default Ember.Object.extend({
     Ember.assert(amount > 0, 'wallet.debit: amount must be > 0');
     this.get('movements').push(-amount);
   },
-  
+
   /**
    * Checks if a debit of a given amount can be
    * made in the wallet.
-   * 
+   *
    * @method canAfford
    * @param {number} amount
    * @return {boolean}

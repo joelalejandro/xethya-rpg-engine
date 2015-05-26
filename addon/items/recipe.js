@@ -7,6 +7,7 @@ import ItemStack from './item-stack';
  * a certain Item.
  *
  * @class Recipe
+ * @namespace Items
  * @extends {Ember.Object}
  * @uses BasicMetadata
  */

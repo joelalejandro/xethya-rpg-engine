@@ -7,6 +7,7 @@ import Ember from 'ember';
  * for more information regarding the formula.
  *
  * @class FibonacciLevelUp
+ * @namespace Leveling
  * @extends {Ember.Object}
  */
 export default Ember.Object.extend({

@@ -5,6 +5,7 @@ import Ember from 'ember';
  * any object.
  *
  * @class BasicMetadata
+ * @namespace Generics
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({

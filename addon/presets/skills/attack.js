@@ -4,7 +4,8 @@ import Skill from '../../skills/skill';
 /**
  * Defines the Attack Skill.
  *
- * @class SkillAttack
+ * @class AttackSkill
+ * @namespace Presets.Skills
  * @extends {Skill}
  */
 export default Skill.extend({

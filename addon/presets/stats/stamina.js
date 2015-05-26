@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Stamina stat.
  *
- * @class StatStamina
+ * @class StaminaStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

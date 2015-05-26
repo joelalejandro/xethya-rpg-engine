@@ -6,6 +6,7 @@ import Dice from './dice';
  *
  * @class DiceRoller
  * @extends {Ember.Mixin}
+ * @namespace Dice
  */
 export default Ember.Mixin.create({
   /**

@@ -4,7 +4,8 @@ import Skill from '../../skills/skill';
 /**
  * Defines the Dodge Skill.
  *
- * @class SkillDodge
+ * @class DodgeSkill
+ * @namespace Presets.Skills
  * @extends {Skill}
  */
 export default Skill.extend({

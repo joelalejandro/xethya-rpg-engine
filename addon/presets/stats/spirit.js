@@ -4,7 +4,8 @@ import Stat from '../../stats/stat';
 /**
  * Defines the Spirit stat.
  *
- * @class StatSpirit
+ * @class SpiritStat
+ * @namespace Presets.Stats
  * @extends {Stat}
  */
 export default Stat.extend({

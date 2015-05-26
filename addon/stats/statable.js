@@ -4,12 +4,13 @@ import Ember from 'ember';
  * Allows an entity to have stats to define its behaviours and possibilities.
  *
  * @class Statable
+ * @namespace Stats
  * @extends {Ember.Mixin}
  */
 export default Ember.Mixin.create({
   /**
    * Determines if the mixin is active.
-   * 
+   *
    * @property hasStats
    * @type {boolean}
    * @default true
