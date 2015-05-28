@@ -133,6 +133,71 @@ export default Ember.Mixin.create({
   },
 
   /**
+   * Handles looting an ItemStack instance.
+   *
+   * @method _lootItemStack
+   * @param  {ItemStack} obj
+   */
+  _lootItemStack: function(obj) {
+    obj.get('item').set('owner', this);
+    if (this.hasObjectInInventory(obj)) {
+      let firstStack = this.get('inventory').find(function(content) {
+        return content.get('_type') === 'ItemStack' &&
+            content.get('item.id') === obj.get('item.id');
+      });
+      if (firstStack) {
+        let newStackSize = firstStack.get('stackSize') + obj.get('stackSize');
+        if (newStackSize > obj.get('item.maxStackSize')) {
+          let stack1Size = Math.abs(obj.get('item.maxStackSize') - firstStack.get('stackSize'));
+          let stack2Size = Math.abs(obj.get('item.maxStackSize') - newStackSize);
+          firstStack.incrementProperty('stackSize', stack1Size);
+
+          let newStack = ItemStack.create({
+            item: firstStack.get('item'),
+            stackSize: stack2Size
+          });
+          this.get('inventory').pushObject(newStack);
+        } else {
+          firstStack.incrementProperty('stackSize', obj.get('stackSize'));
+        }
+      }
+    } else {
+      this.get('inventory').pushObject(obj);
+    }
+  },
+
+  /**
+   * Handles looting an Item instance.
+   *
+   * @method _lootItem
+   * @param  {Item} obj
+   */
+  _lootItem: function(obj) {
+    obj.set('owner', this);
+    if (this.hasObjectInInventory(obj)) {
+      let firstStack = this.get('inventory').find(function(content) {
+        return content.get('_type') === 'ItemStack' &&
+            content.get('item.id') === obj.get('id');
+      });
+      let firstItem = this.get('inventory').find(function(content) {
+        return content.get('_type') === 'Item' &&
+            content.get('id') === obj.get('id');
+      });
+      if (firstStack && obj.get('isStackable')) {
+        firstStack.incrementProperty('stackSize');
+      } else if (firstItem && obj.get('isStackable')) {
+        let newStack = ItemStack.create({ item: obj, stackSize: 2 });
+        this.dropObject(obj, 1);
+        this.get('inventory').pushObject(newStack);
+      } else {
+        this.get('inventory').pushObject(obj);
+      }
+    } else {
+      this.get('inventory').pushObject(obj);
+    }
+  },
+
+  /**
    * Picks up an item from the world, if such item
    * can be looted.
    *
@@ -151,55 +216,10 @@ export default Ember.Mixin.create({
       if (obj.get('item._type') === 'ItemMoney') {
         this.get('wallet').credit(obj.get('stackSize'));
       } else if (obj.get('item.isLootable')) {
-        obj.get('item').set('owner', this);
-        if (this.hasObjectInInventory(obj)) {
-          let firstStack = this.get('inventory').find(function(content) {
-            return content.get('_type') === 'ItemStack' &&
-                content.get('item.id') === obj.get('item.id');
-          });
-          if (firstStack) {
-            let newStackSize = firstStack.get('stackSize') + obj.get('stackSize');
-            if (newStackSize > obj.get('item.maxStackSize')) {
-              let stack1Size = Math.abs(obj.get('item.maxStackSize') - firstStack.get('stackSize'));
-              let stack2Size = Math.abs(obj.get('item.maxStackSize') - newStackSize);
-              firstStack.incrementProperty('stackSize', stack1Size);
-
-              let newStack = ItemStack.create({
-                item: firstStack.get('item'),
-                stackSize: stack2Size
-              });
-              this.get('inventory').pushObject(newStack);
-            } else {
-              firstStack.incrementProperty('stackSize', obj.get('stackSize'));
-            }
-          }
-        } else {
-          this.get('inventory').pushObject(obj);
-        }
+        this._lootItemStack(obj);
       }
     } else if (obj.get('isLootable')) {
-      obj.set('owner', this);
-      if (this.hasObjectInInventory(obj)) {
-        let firstStack = this.get('inventory').find(function(content) {
-          return content.get('_type') === 'ItemStack' &&
-              content.get('item.id') === obj.get('id');
-        });
-        let firstItem = this.get('inventory').find(function(content) {
-          return content.get('_type') === 'Item' &&
-              content.get('id') === obj.get('id');
-        });
-        if (firstStack && obj.get('isStackable')) {
-          firstStack.incrementProperty('stackSize');
-        } else if (firstItem && obj.get('isStackable')) {
-          let newStack = ItemStack.create({ item: obj, stackSize: 2 });
-          this.dropObject(obj, 1);
-          this.get('inventory').pushObject(newStack);
-        } else {
-          this.get('inventory').pushObject(obj);
-        }
-      } else {
-        this.get('inventory').pushObject(obj);
-      }
+      this._lootItem(obj);
     }
 
     MUGRE.recalculateWeight(this);

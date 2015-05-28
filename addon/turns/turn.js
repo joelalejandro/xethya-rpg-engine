@@ -123,20 +123,7 @@ export default Ember.Object.extend(Ember.Evented, DiceRoller, {
       }
       if (relationships !== null && Array.isArray(relationships) &&
           relationships.every(function(r) { return typeof r === 'string'; })) {
-        teamRelationships = relationships.map(function(r) {
-          if (r.indexOf(':') === 0) {
-            return null;
-          }
-
-          let relationshipData = r.split(':');
-          let teamName = relationshipData[0];
-          let teamRelationship = relationshipData[1];
-
-          return TurnTeamRelationship.create({
-            team: TurnTeam.create({ id: Ember.string.camelize(teamName) }),
-            relationship: teamRelationship.toLowerCase()
-          });
-        }).filter(function(r) { return r !== null; });
+        teamRelationships = this._parseTeamRelationships(relationships);
       }
       this.get('teams').pushObject(TurnTeam.create({
         id: Ember.string.camelize(_teamData.name),
@@ -145,6 +132,32 @@ export default Ember.Object.extend(Ember.Evented, DiceRoller, {
         teamRelationships: teamRelationships
       }));
     }
+  },
+
+  /**
+   * Converts a list of team relationship string entities in
+   * relationship objects.
+   *
+   * @function _parseTeamRelationships
+   * @param  {String[]} relationships
+   * @return {TurnTeamRelationship[]}
+   * @private
+   */
+  _parseTeamRelationships: function(relationships) {
+    return relationships.map(function(r) {
+      if (r.indexOf(':') === 0) {
+        return null;
+      }
+
+      let relationshipData = r.split(':');
+      let teamName = relationshipData[0];
+      let teamRelationship = relationshipData[1];
+
+      return TurnTeamRelationship.create({
+        team: TurnTeam.create({ id: Ember.string.camelize(teamName) }),
+        relationship: teamRelationship.toLowerCase()
+      });
+    }).filter(function(r) { return r !== null; });
   },
 
   /**
