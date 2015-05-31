@@ -5,6 +5,7 @@ import SkillDepending from './skill-depending';
 import StatDepending from './stat-depending';
 import Effectable from '../effectable';
 import DiceRoller from '../../dice/dice-roller';
+import Conditioned from '../../items/conditioned';
 
 import SkillDiceRoll from '../../dice/rolls/skill';
 
@@ -19,6 +20,7 @@ import SkillDiceRoll from '../../dice/rolls/skill';
  * @uses StatDepending
  * @uses Effectable
  * @uses DiceRoller
+ * @uses Conditioned
  */
 export default Ember.Object.extend(
   BasicMetadata, SkillDepending, StatDepending, Effectable, DiceRoller,
