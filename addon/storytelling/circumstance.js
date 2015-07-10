@@ -33,4 +33,4 @@ export default Ember.Object.extend(BasicMetadata, {
 
     return this.get('probabilities')[definedIndex];
   }
-})
+});
