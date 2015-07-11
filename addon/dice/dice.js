@@ -4,7 +4,7 @@ import Ember from 'ember';
 import OpenThrowDiceRoll from './rolls/open-throw';
 import BlunderThrowDiceRoll from './rolls/blunder-throw';
 
-import XtrpgConfiguration from '../core/configuration';
+import XtrpgConfiguration from '../configuration';
 
 /**
  * Implements a dice thrower for the game.
