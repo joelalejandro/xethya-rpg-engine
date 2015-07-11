@@ -1,11 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 import Circumstance from 'xtrpg/storytelling/circumstance';
-//import CircumstanceProbability from '../../../storytelling/circumstance-probability';
 
-moduleFor('router:main', 'Unit | Storytelling | Circumstance', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
+moduleFor('router:main', 'Unit | Storytelling | Circumstance', {});
 
 test('circumstance probability created via short syntax', function(assert) {
   var c = Circumstance.create({});

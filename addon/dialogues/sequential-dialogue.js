@@ -27,8 +27,7 @@ export default Ember.Object.extend(BasicMetadata, Ember.Evented, {
   },
 
   removeDialogant: function(dialogant) {
-    let uuid = typeof dialogant === 'string'
-      ? dialogant : dialogant.get('_uuid');
+    let uuid = typeof dialogant === 'string' ? dialogant : dialogant.get('_uuid');
 
     this.set('dialogants',
       this.get('dialogants').rejectBy('_uuid', uuid));
@@ -43,8 +42,7 @@ export default Ember.Object.extend(BasicMetadata, Ember.Evented, {
   },
 
   addLine: function(dialogant, line) {
-    let uuid = typeof dialogant === 'string'
-      ? dialogant : dialogant.get('_uuid');
+    let uuid = typeof dialogant === 'string' ? dialogant : dialogant.get('_uuid');
 
     Ember.assert(this.get('dialogants').findBy('_uuid', uuid),
       'sequentialDialogue.addLine: dialogant must be registered' +
@@ -52,11 +50,10 @@ export default Ember.Object.extend(BasicMetadata, Ember.Evented, {
 
     let dialogIndex = this._getDialogantLineCount(uuid);
 
-    let dialogueLine = typeof line === 'string'
-      ? DialogueLine.create({
-          id: uuid + '-' + dialogIndex,
-          line: line
-        }) : line;
+    let dialogueLine = typeof line === 'string' ? DialogueLine.create({
+      id: uuid + '-' + dialogIndex,
+      line: line
+    }) : line;
 
     if (dialogueLine.get('duration') === null &&
       this.get('autoPlayDialogue')) {
@@ -71,7 +68,6 @@ export default Ember.Object.extend(BasicMetadata, Ember.Evented, {
   },
 
   startDialog: function() {
-    let _this = this;
     this.set('lineQueue', this.get('lines'));
     this.followDialog();
   },
@@ -79,7 +75,7 @@ export default Ember.Object.extend(BasicMetadata, Ember.Evented, {
   followDialog: function() {
     let line = this.get('lineQueue').shift();
     if (line) {
-      _this.get('autoPlayDialogueCallback').call(this, line);
+      this.get('autoPlayDialogueCallback').call(this, line);
       Ember.run.later(this.followDialog, line.get('duration') * 1000);
     } else {
       this.trigger('dialogEnded');

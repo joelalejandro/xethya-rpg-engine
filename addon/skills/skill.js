@@ -23,7 +23,7 @@ import SkillDiceRoll from '../../dice/rolls/skill';
  * @uses Conditioned
  */
 export default Ember.Object.extend(
-  BasicMetadata, SkillDepending, StatDepending, Effectable, DiceRoller,
+  BasicMetadata, SkillDepending, StatDepending, Effectable, DiceRoller, Conditioned,
 
   {
     _type: Ember.computed(function() {
