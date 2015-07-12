@@ -1,20 +1,22 @@
 import Ember from 'ember';
-import BasicMetadata from '../generics/basic-metadata';
 
-export default Ember.Object.createWithMixins(BasicMetadata, {
+export default Ember.Object.create({
 
-  dialogues: Ember.computed(function() { return Ember.A(); }),
-  entities: Ember.computed(function() { return Ember.A(); }),
-  items: Ember.computed(function() { return Ember.A(); }),
-  recipes: Ember.computed(function() { return Ember.A(); }),
-  quests: Ember.computed(function() { return Ember.A(); }),
+  id: 'xtrpg-game',
+  name: 'A Xtrpg-based game',
+
+  _dialogues: [],
+  _entities: [],
+  _items: [],
+  _recipes: [],
+  _quests: [],
 
   setup: function() {
 
   },
 
   run: function() {
-
+    this.setup();
   }
 
 });
