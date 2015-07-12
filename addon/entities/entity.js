@@ -22,6 +22,8 @@ export default Ember.Object.extend(
       return 'Entity';
     }),
 
+    isEntity: true,
+
     /**
      * Unique ID for the Entity instance.
      *

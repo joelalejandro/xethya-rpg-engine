@@ -13,6 +13,8 @@ export default Skill.extend({
   id: Ember.computed(function() { return 'attack'; }),
   name: Ember.computed(function() { return 'Attack'; }),
 
+  isLearned: Ember.computed(function() { return true; }),
+
   /**
    * @property strength
    * @type {StatStrength}

@@ -51,7 +51,7 @@ export default Ember.Mixin.create({
     return expectedComparisonResults[operator].indexOf(result) > -1;
   },
 
-  areConditionsMet: function() {
+  areConditionsMet: Ember.computed('conditions.@each', function() {
     let _this = this;
     return this.get('conditions')
                .map(function(condition) {
@@ -59,5 +59,5 @@ export default Ember.Mixin.create({
                 })
                .concat([true, true])
                .reduce(function(a, b) { return a && b; });
-  }
+  })
 });

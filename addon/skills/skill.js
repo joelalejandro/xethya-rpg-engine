@@ -2,10 +2,11 @@ import Ember from 'ember';
 
 import BasicMetadata from '../generics/basic-metadata';
 import SkillDepending from './skill-depending';
-import StatDepending from '../stats/stat-depending';
-import Effectable from '../effects/effectable';
-import DiceRoller from '../dice/dice-roller';
-import Conditioned from '../items/conditioned';
+import StatDepending from './stat-depending';
+import Effectable from '../effectable';
+import DiceRoller from '../../dice/dice-roller';
+import Conditioned from '../../items/conditioned';
+import Gradeable from '../../items/gradeable';
 
 import SkillDiceRoll from '../dice/rolls/skill';
 
@@ -23,7 +24,8 @@ import SkillDiceRoll from '../dice/rolls/skill';
  * @uses Conditioned
  */
 export default Ember.Object.extend(
-  BasicMetadata, SkillDepending, StatDepending, Effectable, DiceRoller, Conditioned,
+  BasicMetadata, SkillDepending, StatDepending, Effectable, DiceRoller,
+  Conditioned, Gradeable,
 
   {
     _type: Ember.computed(function() {
@@ -46,6 +48,10 @@ export default Ember.Object.extend(
       Ember.assert(!isNaN(cv), 'skill.currentValue must be a number');
     }),
 
+    isLearned: false,
+
+    isLearnable: Ember.computed.alias('areConditionsMet'),
+
     /**
      * Executes the skill. It combines an open dice roll
      * with the skill's current value. If the roll is a
@@ -56,6 +62,10 @@ export default Ember.Object.extend(
      * @return {SkillDiceRoll}
      */
     use: function() {
+      if (!this.get('isLearned')) {
+        throw new Error('SKILL_UNAVAILABLE');
+      }
+
       let roll = this.get('dice').rollOpenThrow();
       let result = SkillDiceRoll.create({ diceRoll: roll });
 

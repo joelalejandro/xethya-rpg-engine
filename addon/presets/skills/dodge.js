@@ -13,6 +13,8 @@ export default Skill.extend({
   id: Ember.computed(function() { return 'dodge'; }),
   name: Ember.computed(function() { return 'Dodge'; }),
 
+  isLearned: Ember.computed(function() { return true; }),
+
   /**
    * @property dexterity
    * @type {StatDexterity}
