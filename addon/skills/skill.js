@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
-import BasicMetadata from '../../core/basic-metadata';
+import BasicMetadata from '../generics/basic-metadata';
 import SkillDepending from './skill-depending';
-import StatDepending from './stat-depending';
-import Effectable from '../effectable';
-import DiceRoller from '../../dice/dice-roller';
-import Conditioned from '../../items/conditioned';
+import StatDepending from '../stats/stat-depending';
+import Effectable from '../effects/effectable';
+import DiceRoller from '../dice/dice-roller';
+import Conditioned from '../items/conditioned';
 
-import SkillDiceRoll from '../../dice/rolls/skill';
+import SkillDiceRoll from '../dice/rolls/skill';
 
 /**
  * Represents the entity's ability to perform an action.

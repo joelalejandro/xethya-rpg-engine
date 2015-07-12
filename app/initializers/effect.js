@@ -1,4 +1,4 @@
-import Effect from 'xtrpg/entity/effect';
+import Effect from 'xtrpg/effects/effect';
 
 export function initialize(container, application) {
   application.register('effect:main', Effect, { instantiate: false });

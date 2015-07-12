@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import BasicMetadata from '../../core/basic-metadata';
+import BasicMetadata from '../generics/basic-metadata';
 
 /**
  * Represents an entity's race.

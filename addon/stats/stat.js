@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Effectable from '../effectable';
-import BasicMetadata from '../../core/basic-metadata';
+import Effectable from '../effects/effectable';
+import BasicMetadata from '../generics/basic-metadata';
 
 /**
  * Defines a stat for an entity. A stat can be modified

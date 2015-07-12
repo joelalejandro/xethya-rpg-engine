@@ -1,4 +1,4 @@
-import Recipe from 'xtrpg/craft/recipe';
+import Recipe from 'xtrpg/items/recipe';
 
 export function initialize(container, application) {
   application.register('recipe:main', Recipe, { instantiate: false });

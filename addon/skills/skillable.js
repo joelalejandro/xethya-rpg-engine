@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import MUGRE from '../../misc/filthy-stuff';
+import MUGRE from '../misc/filthy-stuff';
 
 /**
  * Allows an entity to possess skills and abilities.

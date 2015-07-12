@@ -1,4 +1,4 @@
-import Race from 'xtrpg/entity/specs/race';
+import Race from 'xtrpg/races/race';
 
 export function initialize(container, application) {
   application.register('race:main', Race, { instantiate: false });
