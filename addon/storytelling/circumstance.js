@@ -25,6 +25,10 @@ export default Ember.Object.extend(BasicMetadata, {
     return circumstanceProbability;
   },
 
+  addProbabilities: function(arrayOfShortSyntax) {
+    return this.addProbability.apply(null, arrayOfShortSyntax);
+  },
+
   define: function() {
     let dice = Dice.create();
     let chance = dice.rollChance();
