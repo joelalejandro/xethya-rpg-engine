@@ -12,6 +12,7 @@ import Nameable from '../generics/nameable';
 import Genderable from '../gender/genderable';
 import Equipper from '../inventory/equipper';
 import Wearer from '../inventory/wearer';
+import Traitable from '../personality/traitable';
 
 import StatStrength from '../presets/stats/strength';
 import StatAgility from '../presets/stats/agility';
@@ -47,12 +48,13 @@ import SkillDodge from '../presets/skills/dodge';
  * @uses Equipper
  * @uses Wearer
  * @uses Entity
+ * @uses Traitable
  */
 export default Entity.extend(
 
   Raceable, Statable, Skillable,
   Levelable, Ageable, Nameable, Genderable,
-  Equipper, Wearer,
+  Equipper, Wearer, Traitable,
 
   {
     _type: Ember.computed(function() {
