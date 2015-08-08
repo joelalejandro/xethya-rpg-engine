@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import PersonalityTrait from './personality-trait';
-import XtrpgConfiguration from '../../configuration';
+import XtrpgConfiguration from '../configuration';
 import Circumstance from '../storytelling/circumstance';
 import Dice from '../dice/dice';
 
@@ -25,14 +25,21 @@ export default Ember.Mixin.create({
     let allTraits = XtrpgConfiguration.personalityTraits;
     let totalTraits = allTraits.defaultCount;
     let odds = Circumstance.create();
-    odds.addProbabilities(['+%0.45', '-%0.45', 'o%0.10']);
+    odds.addProbabilities(allTraits.polarityDistribution);
+    let selectedIndexes = Ember.A();
+    var selectedIndex = 0;
     for (let traitCount = 0; traitCount < totalTraits; traitCount++) {
       let traitPolarity = odds.define().get('id');
       let dice = Dice.create({
         minimumValue: 0,
         maximumValue: allTraits[traitPolarity].length - 1
       });
-      this.addPersonalityTrait(allTraits[traitPolarity][dice.rollOne()] + ':' + traitPolarity);
+      do {
+        selectedIndex = dice.rollOne();
+        selectedIndexes.push(selectedIndex);
+      }
+      while (selectedIndexes.indexOf(selectedIndex) < 0);
+      this.addPersonalityTrait(allTraits[traitPolarity][selectedIndex] + ':' + traitPolarity);
     }
   }
 });
