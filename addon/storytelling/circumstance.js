@@ -26,7 +26,10 @@ export default Ember.Object.extend(BasicMetadata, {
   },
 
   addProbabilities: function(arrayOfShortSyntax) {
-    return this.addProbability.apply(null, arrayOfShortSyntax);
+    let circumstance = this;
+    arrayOfShortSyntax.forEach(function(shortSyntax) {
+      circumstance.addProbability(shortSyntax);
+    });
   },
 
   define: function() {
@@ -35,20 +38,29 @@ export default Ember.Object.extend(BasicMetadata, {
     let chanceRates = this.get('probabilities').map(function(probability) {
       return probability.get('chanceRate');
     });
+    let areUniqueRates = chanceRates.map(function(chanceRate) {
+      return chanceRates.filter(function(cr) { return cr === chanceRate; }).length === 1;
+    }).reduce(function(a, b) {
+      return a && b;
+    });
 
-    Ember.assert(chanceRates.length > 0,
-      'circumstance.define: there must be at least one chanceRate defined');
+    Ember.assert(chanceRates.length > 1,
+      'circumstance.define: there must be at least two chanceRates defined');
 
     Ember.assert(chanceRates.reduce(function(a, b) {
       return a + b;
     }) === 1, 'circumstance.define: the sum of all chanceRates must be 1.0');
 
-    let diceMinusRates = chanceRates.map(function(rate) {
-      return Math.abs(chance - rate);
-    });
+    if (areUniqueRates) {
+      let diceMinusRates = chanceRates.map(function(rate) {
+        return Math.abs(chance - rate);
+     });
 
-    let definedIndex = diceMinusRates.indexOf(Math.min.apply(null, diceMinusRates));
+      let definedIndex = diceMinusRates.indexOf(Math.min.apply(null, diceMinusRates));
 
-    return this.get('probabilities')[definedIndex];
+      return this.get('probabilities')[definedIndex];
+    } else {
+      throw new Error('circumstance.define: same-odds events are not supported yet');
+    }
   }
 });
